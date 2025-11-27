@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './Login.css'; // <-- Import local CSS file
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -27,7 +28,6 @@ const Login = () => {
         e.preventDefault();
         if (validate()) {
             console.log("Login submitted successfully:", { email, password });
-            // Navigate to the Landing Page ('/') upon successful login
             navigate('/'); 
         } else {
             console.log("Login validation failed.");
@@ -35,14 +35,15 @@ const Login = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
-            <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md border border-gray-200">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <h2 className="text-3xl font-extrabold text-center text-blue-700">User Login</h2>
+        // Use semantic class names instead of Tailwind
+        <div className="login-page"> 
+            <div className="login-card">
+                <form onSubmit={handleSubmit} className="login-form">
+                    <h2 className="login-title">User Login</h2>
 
                     {/* Email Address */}
-                    <div className="space-y-1">
-                        <label htmlFor="email" className="text-sm font-medium text-gray-700">Email Address</label>
+                    <div className="form-group">
+                        <label htmlFor="email" className="form-label">Email Address</label>
                         <input
                             type="email"
                             id="email"
@@ -50,14 +51,14 @@ const Login = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                            className="form-input"
                         />
-                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                        {errors.email && <p className="error-message">{errors.email}</p>}
                     </div>
 
                     {/* Password */}
-                    <div className="space-y-1">
-                        <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
+                    <div className="form-group">
+                        <label htmlFor="password" className="form-label">Password</label>
                         <input
                             type="password"
                             id="password"
@@ -65,22 +66,22 @@ const Login = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter your password"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                            className="form-input"
                         />
-                        {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
+                        {errors.password && <p className="error-message">{errors.password}</p>}
                     </div>
 
-                    <div className="flex justify-end">
-                        <a href="#" className="text-sm text-blue-600 hover:underline transition duration-150">Forgot Password?</a>
+                    <div className="forgot-password-link">
+                        <a href="#" className="link-text">Forgot Password?</a>
                     </div>
                     
-                    <button type="submit" className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    <button type="submit" className="login-button">
                         Login
                     </button>
                     
-                    <p className="text-center text-sm text-gray-600 mt-4">
+                    <p className="signup-text">
                         Don't have an account? 
-                        <Link to="/signup" className="text-blue-600 font-bold hover:underline ml-1">Sign Up</Link>
+                        <Link to="/signup" className="link-text signup-link">Sign Up</Link>
                     </p>
                 </form>
             </div>

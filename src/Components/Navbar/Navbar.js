@@ -18,11 +18,18 @@ const Navbar = () => {
                     StayHealthy Inc.
                 </Link>
                 <div className="nav__links">
-                    <ul>
+                <ul>
+                        {/* Use Link to connect to the Home route ("/") */}
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/login">Login</Link></li>
+                        
+                        {/* Use Link to connect to the Login route ("/login") */}
+                        <li><Link to="/login">Login</Link></li> 
+                        
+                        {/* Use Link to connect to the Sign Up route ("/signup") */}
                         <li><Link to="/signup">Sign Up</Link></li>
-                        <li><a href="#services">Services</a></li>
+                        
+                        {/* Other links */}
+                        <li><Link to="/services">Services</Link></li>
                     </ul>
                 </div>
                 {/* Mobile menu icon */}
