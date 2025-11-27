@@ -1,42 +1,40 @@
-// src/App.js
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Import components for routing from react-router-dom library
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// Import all required components. Paths should now be correct.
+import Navbar from './Components/Navbar/Navbar';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import Sign_Up from './Components/Sign_Up/Sign_Up'; 
+import Services from './Components/Services/Services';
+import About from './Components/About/About';
+import Contact from './Components/Contact/Contact';
 
-// Import your custom components
-import Navbar from './Components/Navbar/Navbar'; 
-import Landing_Page from './Components/Landing_Page/LandingPage'; 
-import Login from './Components/Login/Login';    // <--- Make sure this is imported
-import SignUp from './Components/Sign_Up/Sign_Up'; // <--- Make sure this is imported
+// --- FIXED IMPORT ---
+// 1. Using the correct folder name: AppointmentFormIC
+// 2. Importing the component (assuming the file inside is Appointment.js)
+import Appointment from './Components/AppointmentFormIC/AppointmentFormIC'; 
 
-// Function component for the main App
-// src/App.js
-
-// ... (imports remain the same)
+// --- FIXED IMPORT ---
+// 3. The InstantConsultation component file is outside its own folder, directly in src/Components/
+import InstantConsultation from './Components/InstantConsultation'; 
 
 function App() {
-    return (
-      <div className="App">
-          <BrowserRouter>
-            <Navbar/>
-  
-            <Routes>
-              {/* Home Route */}
-              <Route path="/" element={<Landing_Page/>}/> 
-              
-              {/* Login Route - Cleaned Up */}
-              <Route path="/login" element={<Login/>}/> 
-              
-              {/* Sign Up Route - Cleaned Up */}
-              <Route path="/signup" element={<SignUp/>}/> 
-            </Routes>
-          </BrowserRouter>
-      </div>
-    );
-  }
-  
-  // ... (export remains the same)
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Sign_Up />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/appointment" element={<Appointment />} /> 
+        <Route path="/instant-consultation" element={<InstantConsultation />} />
+      </Routes>
+    </Router>
+  );
+}
 
-// Export the App component as the default export
 export default App;
