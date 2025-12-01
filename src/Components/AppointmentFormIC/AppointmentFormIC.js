@@ -1,46 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react';
+import FindDoctorSearch from '../FindDoctorSearch/FindDoctorSearch'; // Import the new component
+// import AppointmentSlotBooking from './AppointmentSlotBooking'; // Placeholder for later steps
 
-const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
-    const [name, setName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [selectedSlot, setSelectedSlot] = useState(null);
+const AppointmentFormIC = () => {
+  // The state variables from Exercise 1 that were throwing warnings are now removed
   
-    const handleSlotSelection = (slot) => {
-      setSelectedSlot(slot);
-    };
-  
-    const handleFormSubmit = (e) => {
-      e.preventDefault();
-      onSubmit({ name, phoneNumber });
-      setName('');
-      setPhoneNumber('');
-    };
-  
-    return (
-      <form onSubmit={handleFormSubmit} className="appointment-form">
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="phoneNumber">Phone Number:</label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Book Now</button>
-      </form>
-    );
-  };
+  return (
+    <div className="appointment-page-container">
+      {/* This is the integration point: The search component 
+        is placed here to allow users to search before viewing booking slots.
+      */}
+      <FindDoctorSearch />
 
-export default AppointmentFormIC
+      {/* The rest of the Appointment logic (like listing doctors or booking slots) 
+        will go here in later exercises, potentially replacing the FindDoctorSearch 
+        component with search results.
+      */}
+      <div style={{textAlign: 'center', marginTop: '30px', color: '#6b7280'}}>
+          Search results and booking slots will appear here after search.
+      </div>
+    </div>
+  );
+};
+
+export default AppointmentFormIC;
