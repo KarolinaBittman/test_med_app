@@ -3,8 +3,8 @@ import './InstantConsultation.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import Popup from 'reactjs-popup';
-import DoctorCardIC from './DoctorCardIC/DoctorCardIC'; // Check casing here!
-import FindDoctorSearchIC from './FindDoctorSearchIC/FindDoctorSearchIC'; // Check casing here!
+import DoctorCardIC from '../DoctorCardIC/DoctorCardIC'; // Check casing here!
+import FindDoctorSearchIC from '../FindDoctorSearchIC/FindDoctorSearchIC'; // Check casing here!
 
 
 const InstantConsultation = () => {
